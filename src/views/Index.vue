@@ -20,23 +20,23 @@
 </template>
 
 <script>
-import footermain from '../components/indexComponents/FooterMain'
-import Carousel from '../components/indexComponents/Carousel'
+import footermain from '../components/indexComponents/FooterMain.vue';
+import Carousel from '../components/indexComponents/Carousel.vue';
 
 export default {
   name: 'index',
   components: { Carousel, footermain },
-  data () {
+  data() {
     return {
-      value: new Date()
-    }
+      value: new Date(),
+    };
   },
-  beforeCreate () {
+  beforeCreate() {
     this.$alert('正在开发的页面，登录功能需要请求后台，本站点后台正在开发，码云搜索：float，作者：浮生Husei，即可下载到配套源码！', '警告！！！', {
-      confirmButtonText: '确定'
-    })
-  }
-}
+      confirmButtonText: '确定',
+    });
+  },
+};
 </script>
 
 <style scoped>

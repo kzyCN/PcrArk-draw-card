@@ -10,21 +10,23 @@
 </template>
 
 <script>
+
+// 读取走马灯图片json
+import res from '../../../public/data/CarouselImgbox.json';
+
 export default {
   name: 'Carousel',
   // vue生命周期函数
-  created () {
-    // 读取走马灯图片json
-    var res = require('../../../public/data/CarouselImgbox.json')
-    this.imgbox = res.imgbox
-    console.log(res.imgbox[0].url)
+  created() {
+    this.imgbox = res.imgbox;
+    console.log(res.imgbox[0].url);
   },
-  data () {
+  data() {
     return {
-      imgbox: []
-    }
-  }
-}
+      imgbox: [],
+    };
+  },
+};
 </script>
 
 <style scoped>

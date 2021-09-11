@@ -11,8 +11,8 @@
 
 <script>
 export default {
-  name: 'footermain'
-}
+  name: 'footermain',
+};
 </script>
 
 <style scoped>

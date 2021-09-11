@@ -81,12 +81,12 @@
 
 <script>
 // 导入页脚组件
-import footermain from '../components/indexComponents/FooterMain'
+import footermain from '@/components/indexComponents/FooterMain.vue';
 
 export default {
   name: 'about',
-  components: { footermain }
-}
+  components: { footermain },
+};
 </script>
 
 <style scoped>

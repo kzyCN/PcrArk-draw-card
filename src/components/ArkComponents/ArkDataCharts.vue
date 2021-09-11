@@ -15,50 +15,48 @@
 
 <script>
 export default {
-  name: "ArkDataCharts",
+  name: 'ArkDataCharts',
   data() {
     return {
       userInfo: {
-        token: ""
+        token: '',
       },
       arkData: {
-        _six: 0,
-        _five: 0,
-        _four: 0,
-        _three: 0,
-        _isnew: 0
-      }
-    }
+        six: 0,
+        five: 0,
+        four: 0,
+        three: 0,
+        isnew: 0,
+      },
+    };
   },
   methods: {
     inquiry() {
-      this.$http.post("https://ark.fsyume.com:9966/arkdata", this.userInfo).then((res) => {
+      this.$http.post('https://ark.fsyume.com:9966/arkdata', this.userInfo).then((res) => {
+        const fineData = res.data.data;
+        console.log(res.data);
 
-          var fineData = res.data.data;
-          console.log(res.data);
+        this.arkData.six = fineData.six;
+        this.arkData.five = fineData.five;
+        this.arkData.four = fineData.four;
+        this.arkData.three = fineData.three;
 
-          this.arkData._six = fineData.six;
-          this.arkData._five = fineData.five;
-          this.arkData._four = fineData.four;
-          this.arkData._three = fineData.three;
-
-          this.myEcharts();
-        }
-      )
+        this.myEcharts();
+      });
     },
     myEcharts() {
       // 基于准备好的dom，初始化echarts实例
-      var myChart = this.$echarts.init(document.getElementById('main'));
+      const myChart = this.$echarts.init(document.getElementById('main'));
 
       // 指定图表的配置项和数据
-      var option = {
+      const option = {
         title: {
           text: '明日方舟寻坊分析',
           subtext: 'by：浮生yume',
-          left: 'center'
+          left: 'center',
         },
         tooltip: {
-          trigger: 'item'
+          trigger: 'item',
         },
         legend: {
           orient: 'vertical',
@@ -69,40 +67,40 @@ export default {
           type: 'pie',
           radius: '50%',
           data: [{
-            value: this.arkData._six,
-            name: '6星'
+            value: this.arkData.six,
+            name: '6星',
           },
-            {
-              value: this.arkData._five,
-              name: '5星'
-            },
-            {
-              value: this.arkData._four,
-              name: '4星'
-            },
-            {
-              value: this.arkData._three,
-              name: '3星'
-            }
+          {
+            value: this.arkData.five,
+            name: '5星',
+          },
+          {
+            value: this.arkData.four,
+            name: '4星',
+          },
+          {
+            value: this.arkData.three,
+            name: '3星',
+          },
           ],
           emphasis: {
             itemStyle: {
               shadowBlur: 10,
               shadowOffsetX: 0,
-              shadowColor: 'rgba(0, 0, 0, 0.5)'
-            }
-          }
-        }]
+              shadowColor: 'rgba(0, 0, 0, 0.5)',
+            },
+          },
+        }],
       };
 
       // 使用刚指定的配置项和数据显示图表。
       myChart.setOption(option);
-    }
+    },
   },
   mounted() {
     // this.myEcharts();
-  }
-}
+  },
+};
 </script>
 
 <style scoped>

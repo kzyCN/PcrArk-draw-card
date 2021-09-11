@@ -1,14 +1,13 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import pcr from '../views/Pcr/Pcr'
-import Arknights from '../views/Ark/Arknights'
-import about from '../views/About'
-import PcrDrawCard from '../components/PcrComponents/PcrDrawCard'
-import notfound from '../views/NotFound'
-import Element from 'element-ui'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import Element from 'element-ui';
+import pcr from '../views/Pcr/Pcr.vue';
+import Arknights from '../views/Ark/Arknights.vue';
+import about from '../views/About.vue';
+import PcrDrawCard from '../components/PcrComponents/PcrDrawCard.vue';
+import notfound from '../views/NotFound.vue';
 
-
-Vue.use(VueRouter, Element)
+Vue.use(VueRouter, Element);
 
 const routes = [
   // 公主连结蛋池模拟
@@ -19,8 +18,8 @@ const routes = [
     children: [
       // { path: '/', component: index, meta: { title: '公主连结蛋池模拟' } },
       { path: '/', component: PcrDrawCard, meta: { title: '公主连结蛋池模拟' } },
-      { path: 'about', component: about, meta: { title: '关于|公主连结蛋池模拟' } }
-    ]
+      { path: 'about', component: about, meta: { title: '关于|公主连结蛋池模拟' } },
+    ],
   },
 
   // 明日方舟蛋池模拟
@@ -28,23 +27,22 @@ const routes = [
     path: '/arknights',
     component: Arknights,
     meta: {
-      title: '明日方舟蛋池模拟'
-    }
+      title: '明日方舟蛋池模拟',
+    },
   },
 
   // 404路由
   {
     path: '*',
     component: notfound,
-    meta: { title: '页面走丢了~' }
-  }
-]
+    meta: { title: '页面走丢了~' },
+  },
+];
 
 // 将路由模式改成history模式
 const router = new VueRouter({
   // mode: 'history',
-  routes
-})
+  routes,
+});
 
-
-export default router
+export default router;

@@ -60,8 +60,8 @@
         </div>
         <div class="msgbutton">
           <div class="buttombox">
-            <el-button type="primary" @click="show = false,onClean()">重置</el-button>
-            <el-button type="danger" @click="show = true,onTenTimes()">十连模拟</el-button>
+            <el-button type="primary" @click="show = false;onClean()">重置</el-button>
+            <el-button type="danger" @click="show = true;onTenTimes()">十连模拟</el-button>
           </div>
         </div>
       </div>
@@ -126,18 +126,18 @@
 
 <script>
 // 导入页脚组件
-import footermain from '../indexComponents/FooterMain'
-import {Record, Recruit, Refresh} from '../../../public/core/lottery'
-import PcrProbability from './PcrProbability'
+import footermain from '../indexComponents/FooterMain.vue';
+import { Record, Recruit, Refresh } from '../../../public/core/lottery';
+import PcrProbability from './PcrProbability.vue';
 
 export default {
   name: 'PcrDrawCard',
-  components: {PcrProbability, footermain},
+  components: { PcrProbability, footermain },
   // vue生命周期函数
   created() {
     this.$alert('正在开发的页面，其中概率调整还未实现，望周知！！！', '警告！！！', {
-      confirmButtonText: '确定'
-    })
+      confirmButtonText: '确定',
+    });
   },
   data() {
     return {
@@ -151,7 +151,7 @@ export default {
         img7: '',
         img8: '',
         img9: '',
-        img10: ''
+        img10: '',
       },
       show: false,
       tableData: [
@@ -159,66 +159,66 @@ export default {
           date: new Date().toLocaleString(),
           frequency: 0,
           gem: 0,
-          rmb: 0
-        }
+          rmb: 0,
+        },
       ],
       tableData2: [
         {
           onestar: 0,
           twostar: 0,
           threestar: 0,
-          ShipmentRate: 0
-        }
-      ]
-    }
+          ShipmentRate: 0,
+        },
+      ],
+    };
   },
   methods: {
     onTenTimes() {
       // 次数信息数据
-      this.tableData[0].frequency = this.tableData[0].frequency + 10
-      this.tableData[0].gem = this.tableData[0].gem + 1500
-      this.tableData[0].rmb = this.tableData[0].rmb + 155
+      this.tableData[0].frequency += 10;
+      this.tableData[0].gem += 1500;
+      this.tableData[0].rmb += 155;
       // 图像数据
-      this.urls.img1 = Recruit.Start()
-      this.urls.img2 = Recruit.Start()
-      this.urls.img3 = Recruit.Start()
-      this.urls.img4 = Recruit.Start()
-      this.urls.img5 = Recruit.Start()
-      this.urls.img6 = Recruit.Start()
-      this.urls.img7 = Recruit.Start()
-      this.urls.img8 = Recruit.Start()
-      this.urls.img9 = Recruit.Start()
-      this.urls.img10 = Recruit.LastStart()
+      this.urls.img1 = Recruit.Start();
+      this.urls.img2 = Recruit.Start();
+      this.urls.img3 = Recruit.Start();
+      this.urls.img4 = Recruit.Start();
+      this.urls.img5 = Recruit.Start();
+      this.urls.img6 = Recruit.Start();
+      this.urls.img7 = Recruit.Start();
+      this.urls.img8 = Recruit.Start();
+      this.urls.img9 = Recruit.Start();
+      this.urls.img10 = Recruit.LastStart();
       // 出货记录数据
-      this.tableData2[0].onestar = Record.one
-      this.tableData2[0].twostar = Record.two
-      this.tableData2[0].threestar = Record.three
-      this.tableData2[0].ShipmentRate = this.percentage()
+      this.tableData2[0].onestar = Record.one;
+      this.tableData2[0].twostar = Record.two;
+      this.tableData2[0].threestar = Record.three;
+      this.tableData2[0].ShipmentRate = this.percentage();
       // 下方两行为测试代码
       // var a = require('../../public/data/pcr.json')
       // this.urls.img1 = a.threestar[0].url
     },
     // 重置按钮
     onClean() {
-      this.tableData[0].frequency = 0
-      this.tableData[0].gem = 0
-      this.tableData[0].rmb = 0
+      this.tableData[0].frequency = 0;
+      this.tableData[0].gem = 0;
+      this.tableData[0].rmb = 0;
       // 出货记录数据归零
-      this.tableData2[0].onestar = 0
-      this.tableData2[0].twostar = 0
-      this.tableData2[0].threestar = 0
-      this.tableData2[0].ShipmentRate = 0
-      Refresh()
+      this.tableData2[0].onestar = 0;
+      this.tableData2[0].twostar = 0;
+      this.tableData2[0].threestar = 0;
+      this.tableData2[0].ShipmentRate = 0;
+      Refresh();
     },
     // 出货率百分比方法
     percentage() {
-      var a = Record.three / this.tableData[0].frequency
-      var str = Number(a * 100).toFixed(1)
-      str += '%'
-      return str
-    }
-  }
-}
+      const a = Record.three / this.tableData[0].frequency;
+      let str = Number(a * 100).toFixed(1);
+      str += '%';
+      return str;
+    },
+  },
+};
 </script>
 
 <style scoped>

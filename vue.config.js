@@ -5,21 +5,21 @@ module.exports = {
       favicon16: 'favicon.ico',
       appleTouchIcon: 'favicon.ico',
       maskIcon: 'favicon.ico',
-      msTileImage: 'favicon.ico'
-    }
+      msTileImage: 'favicon.ico',
+    },
   },
   devServer: {
-    proxy: {  //配置跨域
+    proxy: { // 配置跨域
       '/a': {
-        target: 'https://as.hypergryph.com',  //填写真实的后台接口
+        target: 'https://as.hypergryph.com', // 填写真实的后台接口
         secure: true,
-        changOrigin: true,  //允许跨域
+        changOrigin: true, // 允许跨域
         pathRewrite: {
-          '^/a': ''
-        }
+          '^/a': '',
+        },
       },
-    }
+    },
   },
 
-  productionSourceMap: false
-}
+  productionSourceMap: false,
+};
