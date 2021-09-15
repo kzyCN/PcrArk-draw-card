@@ -277,8 +277,7 @@ export default {
 }
 
 .el-card {
-  margin: 0 auto;
-  margin-bottom: 20px;
+  margin: 0 auto 20px;
   width: 980px;
   height: 300px;
 }
